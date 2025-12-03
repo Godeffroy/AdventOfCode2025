@@ -24,6 +24,8 @@ vector<string> inputLines;
 long long result = 0;
 
 void ReadInputFile(int day, int part);
+void ReadInput(string& input);
+void UpdateProgress(size_t progress, size_t total);
 
 void Day_01_Part_1();
 void Day_01_Part_2();

@@ -19,20 +19,26 @@ void ReadInput(string& input)
 	cin >> input;
 }
 
+void UpdateProgress(size_t progress, size_t total)
+{
+    println("Progress : " + to_string(progress) + " / " + to_string(total));
+}
+
 int main()
 {
     println("*----------------*");
     println("| Advent of Code |");
     println("*----------------*");
 
-    Day_02_Part_1();
+    Day_02_Part_2();
 
     println("Result : " + to_string(result));
 	return 0;
 }
 
-// result : 19128774598
-void Day_02_Part_1()
+// result : 
+// 4175389365 too low
+void Day_02_Part_2()
 {
     ReadInputFile(2, 1);
     string line = inputLines[0];
@@ -58,23 +64,38 @@ void Day_02_Part_1()
 
     vector<long long> invalidID;
     int cpt = 0;
-    for (string str : inputLines)
+    for (string strTmp : inputLines)
     {
         for (long long i = id1[cpt]; i <= id2[cpt]; i++)
         {
-            string s = to_string(i);
-            if (to_string(i).length() % 2 != 0)
-                continue;
-            if (s.substr(0, to_string(i).length() / 2) == s.substr(to_string(i).length() / 2))
-                invalidID.push_back(i);
+            string currentId = to_string(i);
+            for (size_t y = 1; y <= currentId.length()/2; y++)
+            {
+				string search = currentId.substr(0, y);
+				if (search.length() == 0 || currentId.length() % search.length() != 0)
+                    continue;
+                int divide = currentId.length() / search.length();
+                bool same = true;
+                for (size_t z = 1; z < divide; z++)
+                {
+                    string test = currentId.substr(z * search.length(), search.length());
+                    same = same && test == search;
+                    if (!same)
+                        break;
+                }
+                if (same && (invalidID.empty() || invalidID.back() != i))
+                    invalidID.push_back(i);
+            }
         }
         cpt++;
+		UpdateProgress(cpt, inputLines.size());
     }
     for (long long int id : invalidID)
     {
         result += id;
     }
 }
+
 // result : 19128774598
 void Day_02_Part_1()
 {
@@ -162,6 +183,7 @@ void Day_01_Part_2()
     }
 }
 
+// result
 void Day_01_Part_1()
 {
     ReadInputFile(1, 1);
