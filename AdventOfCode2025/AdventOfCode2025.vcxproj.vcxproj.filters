@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Input">
+      <UniqueIdentifier>{0f6c17cf-20e5-4c64-92de-6811123a8432}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input\input_1_0.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_1_1.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_1_2.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_2_0.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_2_1.txt">
+      <Filter>Input</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
