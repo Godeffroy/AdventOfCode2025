@@ -13,6 +13,7 @@ void Day_03_Part_2()
 
 // result : 
 // 17147 too low
+// 17207 ok
 void Day_03_Part_1()
 {
 	vector<string> inputLines = ReadInputFile(3, 1);
@@ -23,16 +24,17 @@ void Day_03_Part_1()
 	for (string line:inputLines)
 	{
 		bat1 = bat2 = 0;
+		int cpt = 0;
 		for (char c : line)
 		{
-			int bat = c - '0';
-			if (bat > bat1 && c != line[line.length() - 1])
+			if (int bat = c - '0'; bat > bat1 && cpt != (line.length() - 1))
 			{
 				bat1 = bat;
 				bat2 = 0;
 			}
 			else if (bat > bat2)
 				bat2 = bat;
+			cpt++;
 		}
 		int jolt = bat1 * 10 + bat2;
 		result += jolt;
