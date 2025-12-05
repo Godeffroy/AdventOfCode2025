@@ -1,34 +1,7 @@
 #pragma once
 
+#include "Tools.h"
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-
-//https://cplusplus.com/reference/string/string/
-using std::string;
-using std::cout;
-using std::endl;
-using std::cin;
-using std::vector;
-using std::to_string;
-using std::stoi;
-using std::stol;
-
-#define print(x) cout<<x;
-#define println(x) cout << x << endl;
-
-
-vector<string> inputLines;
-long long result = 0;
-
-void ReadInputFile(int day, int part);
-void ReadInput(string& input);
-void UpdateProgress(size_t progress, size_t total);
-
-void Day_01_Part_1();
-void Day_01_Part_2();
-
-void Day_02_Part_1();
-void Day_02_Part_2();
+#include "Days/Day01.h"
+#include "Days/Day02.h"
+#include "Days/Day03.h"

@@ -2,10 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Days\Day02.h">
+      <Filter>Days</Filter>
+    </ClCompile>
+    <ClCompile Include="Days\Day01.h">
+      <Filter>Days</Filter>
+    </ClCompile>
+    <ClCompile Include="Days\Day02.cpp">
+      <Filter>Days</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
       <UniqueIdentifier>{0f6c17cf-20e5-4c64-92de-6811123a8432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Days">
+      <UniqueIdentifier>{1ed4dc32-9e02-4963-80bc-9254dcb6db3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,5 +37,12 @@
     <Text Include="input\input_2_1.txt">
       <Filter>Input</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Days\Day01.cpp">
+      <Filter>Days</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
 </Project>
