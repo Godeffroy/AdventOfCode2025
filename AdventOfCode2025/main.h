@@ -5,3 +5,4 @@
 #include "Days/Day01.h"
 #include "Days/Day02.h"
 #include "Days/Day03.h"
+#include "Days/Day04.h"
