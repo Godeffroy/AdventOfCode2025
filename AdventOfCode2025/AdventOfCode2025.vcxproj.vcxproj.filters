@@ -12,6 +12,9 @@
       <Filter>Days</Filter>
     </ClCompile>
     <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="Days\Day03.cpp">
+      <Filter>Days</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
@@ -37,6 +40,12 @@
     <Text Include="input\input_2_1.txt">
       <Filter>Input</Filter>
     </Text>
+    <Text Include="input\input_3_0.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_3_1.txt">
+      <Filter>Input</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
@@ -44,5 +53,8 @@
       <Filter>Days</Filter>
     </ClInclude>
     <ClInclude Include="Tools.h" />
+    <ClInclude Include="Days\Day03.h">
+      <Filter>Days</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

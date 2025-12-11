@@ -1,7 +1,7 @@
 #include "Day03.h"
 
 // result :
-// 
+// 170997883706617
 void Day_03_Part_2()
 {
 	vector<string> inputLines = ReadInputFile(3, 1);
