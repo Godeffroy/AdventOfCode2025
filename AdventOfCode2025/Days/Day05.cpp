@@ -1,33 +1,37 @@
 #include "Day05.h"
 
 // result : 
-// 
+// 442266765077712 too high
 void Day_05_Part_2()
 {
-	vector<string> inputLines = ReadInputFile(5, 0);
+	vector<string> inputLines = ReadInputFile(5, 1);
 	long long result = 0;
 	long long progress = 0;
 
-	struct range {
+	struct range_t {
 		long long start;
 		long long end;
 	};
-	vector<range> ranges;
+	vector<range_t> ranges;
 	vector<long long> ids;
 	for (string line : inputLines)
 	{
 		if (size_t rangeIndex = line.find('-'); rangeIndex != -1)
 		{
-			ranges.push_back(range{ stoll(line.substr(0, rangeIndex)), stoll(line.substr(rangeIndex + 1)) });
+			ranges.push_back(range_t{ stoll(line.substr(0, rangeIndex)), stoll(line.substr(rangeIndex + 1)) });
 		}
-		if (line.length() != 0)
+		else if (line.length() != 0)
 		{
 			ids.push_back(stoll(line));
 		}
-
 	}
-	
-	UpdateProgress(progress, inputLines.size(), to_string(result));
+
+		for (auto range : ranges)
+		{
+			result += (range.end - range.start + 1);
+		}
+		UpdateProgress(progress++, ids.size(), to_string(result));
+
 
 	println("Result : " + to_string(result));
 }
