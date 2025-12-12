@@ -1,20 +1,111 @@
 #include "Day04.h"
 
 // result : 
-// 
+// 8354
 void Day_04_Part_2()
 {
-	vector<string> inputLines = ReadInputFile(4, 0);
+	vector<string> inputLines = ReadInputFile(4, 1);
+	vector<vector<char>> grid;
 	long long result = 0;
 	long long progress = 0;
 	for (string line : inputLines)
 	{
-		progress++;
-		UpdateProgress(progress, inputLines.size(), to_string(progress));
+		grid.emplace_back();
+		for (char c : line)
+		{
+			grid[grid.size() - 1].push_back(c);
+		}
+	}
+	struct couple {
+    size_t x;
+    size_t y;
+	};
+	vector<couple> remove;
+	while (!remove.empty() || progress == 0)
+	{
+		remove.clear();
+		for (size_t y = 0; y < grid.size(); y++)
+		{
+			for (size_t x = 0; x < grid[y].size(); x++)
+			{
+				if (grid[y][x] == '.')
+					continue;
+
+				int roll = 0;
+				//down
+				if (y < grid.size() - 1 && grid[y + 1][x] == '@')
+					roll++;
+				//up
+				if (y > 0 && grid[y - 1][x] == '@')
+					roll++;
+				//left
+				if (x > 0 && grid[y][x - 1] == '@')
+					roll++;
+				//right
+				if (x < grid[y].size() - 1 && grid[y][x + 1] == '@')
+					roll++;
+				//diagDownLeft
+				if (x > 0 && y < grid.size() - 1 && grid[y + 1][x - 1] == '@')
+					roll++;
+				//diagDownRight
+				if (x < grid[y].size() - 1 && y < grid.size() - 1 && grid[y + 1][x + 1] == '@')
+					roll++;
+				//diagUpLeft
+				if (y > 0 && x > 0 && grid[y - 1][x - 1] == '@')
+					roll++;
+				//diagUpRight
+				if (x < grid[y].size() - 1 && y > 0 && grid[y - 1][x + 1] == '@')
+					roll++;
+
+				if (roll < 4)
+				{
+					remove.push_back(couple{ x,y });
+					result++;
+				}
+			}
+			progress++;
+		}
+		UpdateProgress(progress, inputLines.size(), to_string(remove.size()));
+
+		for (couple c : remove)
+		{
+			grid[c.y][c.x] = '.';
+		}
 	}
 
 	println("Result : " + to_string(result));
 }
+
+/*
+//down
+if (y < grid.size() - 1 && grid[y + 1][x] == '@')
+	remove.push_back(couple{ y + 1,x });
+//up
+if (y > 0 && grid[y - 1][x] == '@')
+	remove.push_back(couple{ y-1,x });
+//left
+if (x > 0 && grid[y][x - 1] == '@')
+	remove.push_back(couple{ y,x-1 });
+//right
+if (x < grid[y].size() - 1 && grid[y][x + 1] == '@')
+	remove.push_back(couple{ y,x+1 });
+//diagDownLeft
+if (x > 0 && y < grid.size() - 1 && grid[y + 1][x - 1] == '@')
+	remove.push_back(couple{ y+1,x-1 });
+//diagDownRight
+if (x < grid[y].size() - 1 && y < grid.size() - 1 && grid[y + 1][x + 1] == '@')
+	remove.push_back(couple{ y+1,x+1 });
+//diagUpLeft
+if (y > 0 && x > 0 && grid[y - 1][x - 1] == '@')
+	remove.push_back(couple{ y-1,x-1 });
+//diagUpRight
+if (x < grid[y].size() - 1 && y > 0 && grid[y - 1][x + 1] == '@')
+	remove.push_back(couple{ y-1,x+1 });
+
+if (remove.size() < 4)
+{
+	result+= remove.size();
+}*/
 
 // result :
 // 1320
