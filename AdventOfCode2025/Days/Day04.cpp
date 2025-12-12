@@ -17,10 +17,10 @@ void Day_04_Part_2()
 }
 
 // result :
-// 
+// 1320
 void Day_04_Part_1()
 {
-	vector<string> inputLines = ReadInputFile(4, 0);
+	vector<string> inputLines = ReadInputFile(4, 1);
 	vector<vector<char>> grid;
 	long long result = 0;
 	long long progress = 0;
@@ -33,53 +33,45 @@ void Day_04_Part_1()
 		}
 	}
 
-	for (signed long long y = grid.size()-1; y >= 0; y--)
+	for (size_t y = 0; y < grid.size(); y++)
 	{
 		for (size_t x = 0; x < grid[y].size(); x++)
 		{
 			if (grid[y][x] == '.')
 				continue;
-			if (y == 0 || y == grid.size() - 1 || x == 0 || x == grid[y].size() - 1)
-				result++;
-			else
-			{
-				int roll = 0;
-				//char current = grid[y][x];
-				char up = grid[y + 1][x];
-				if (up == '.')
+
+			int roll = 0;
+				//down
+				if (y < grid.size() - 1 && grid[y + 1][x] == '@')
 					roll++;
-				char down = grid[y - 1][x];
-				if (down == '.')
+				//up
+				if (y > 0 && grid[y - 1][x] == '@')
 					roll++;
-				char left = grid[y][x - 1];
-				if (left == '.')
+				//left
+				if (x > 0 && grid[y][x - 1] == '@')
 					roll++;
-				char right = grid[y][x + 1];
-				if (right == '.')
+				//right
+				if (x < grid[y].size() - 1 && grid[y][x + 1] == '@')
 					roll++;
-				char diagUpLeft = grid[y + 1][x - 1];
-				if (diagUpLeft == '.')
+				//diagDownLeft
+				if (x > 0 && y < grid.size() - 1 && grid[y + 1][x - 1] == '@')
 					roll++;
-				char diagUpRight = grid[y + 1][x + 1];
-				if (diagUpRight == '.')
+				//diagDownRight
+				if (x < grid[y].size() - 1 && y < grid.size() - 1 && grid[y + 1][x + 1] == '@')
 					roll++;
-				char diagDownLeft = grid[y - 1][x - 1];
-				if (diagDownLeft == '.')
+				//diagUpLeft
+				if (y > 0 && x > 0 && grid[y - 1][x - 1] == '@')
 					roll++;
-				char diagDownRight = grid[y - 1][x + 1];
-				if (diagDownRight == '.')
+				//diagUpRight
+				if (x < grid[y].size() - 1 && y > 0 && grid[y - 1][x + 1] == '@')
 					roll++;
 
-				if(roll<4)
+				if (roll < 4)
 					result++;
-			}
+		}
 			progress++;
 			UpdateProgress(progress, inputLines.size(), to_string(progress));
-		}
-	}
-
-
-	
+	}	
 
 	println("Result : " + to_string(result));
 }
