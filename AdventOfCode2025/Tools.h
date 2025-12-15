@@ -16,6 +16,7 @@ using std::vector;
 using std::to_string;
 using std::stoi;
 using std::stol;
+using std::stoll;
 
 #define print(x) cout<<x
 #define println(x) cout << x << endl
