@@ -128,8 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Days\Day01.cpp" />
-    <ClCompile Include="Days\Day01.h" />
+    <ClCompile Include="Days\Day01.cpp" />
+    <ClInclude Include="Days\Day01.h" />
     <ClCompile Include="Days\Day02.cpp" />
     <ClCompile Include="Days\Day02.h" />
     <ClCompile Include="Days\Day03.cpp" />

@@ -17,5 +17,10 @@ vector<string> ReadInputFile(int day, int part)
 
 void UpdateProgress(size_t progress, size_t total, string const & subResult)
 {
-    println("Progress : " + to_string(progress) + " / " + to_string(total) + "    " + subResult);
+    println("Progress : " + to_string(progress, to_string(total).size()) + " / " + to_string(total) + "    " + subResult);
+}
+
+string to_string(long long value, int space)
+{
+    return string(space-to_string(value).size(), ' ').append(to_string(value));
 }

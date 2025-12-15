@@ -22,3 +22,4 @@ using std::stol;
 
 vector<string> ReadInputFile(int day, int part);
 void UpdateProgress(size_t progress, size_t total, string const& subResult = "");
+string to_string(long long value, int space);

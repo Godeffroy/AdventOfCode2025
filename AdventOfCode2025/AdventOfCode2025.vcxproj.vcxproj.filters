@@ -5,9 +5,6 @@
     <ClCompile Include="Days\Day02.h">
       <Filter>Days</Filter>
     </ClCompile>
-    <ClCompile Include="Days\Day01.h">
-      <Filter>Days</Filter>
-    </ClCompile>
     <ClCompile Include="Days\Day02.cpp">
       <Filter>Days</Filter>
     </ClCompile>
@@ -19,6 +16,9 @@
       <Filter>Days</Filter>
     </ClCompile>
     <ClCompile Include="Days\Day05.cpp">
+      <Filter>Days</Filter>
+    </ClCompile>
+    <ClCompile Include="Days\Day01.cpp">
       <Filter>Days</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,9 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
-    <ClInclude Include="Days\Day01.cpp">
-      <Filter>Days</Filter>
-    </ClInclude>
     <ClInclude Include="Tools.h" />
     <ClInclude Include="Days\Day03.h">
       <Filter>Days</Filter>
@@ -78,6 +75,9 @@
       <Filter>Days</Filter>
     </ClInclude>
     <ClInclude Include="Days\Day05.h">
+      <Filter>Days</Filter>
+    </ClInclude>
+    <ClInclude Include="Days\Day01.h">
       <Filter>Days</Filter>
     </ClInclude>
   </ItemGroup>
