@@ -8,8 +8,7 @@ int main()
 
     try
     {
-        //Day_01_Part_1();
-        Day_01_Part_2();
+        Day_06_Part_1();
     }
     catch (const std::system_error& e)
     {

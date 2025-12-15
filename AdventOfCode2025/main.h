@@ -7,3 +7,4 @@
 #include "Days/Day03.h"
 #include "Days/Day04.h"
 #include "Days/Day05.h"
+#include "Days/Day06.h"
