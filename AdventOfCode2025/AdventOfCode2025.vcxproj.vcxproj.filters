@@ -24,6 +24,9 @@
     <ClCompile Include="Days\Day06.cpp">
       <Filter>Days</Filter>
     </ClCompile>
+    <ClCompile Include="Days\Day08.cpp">
+      <Filter>Days</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
@@ -73,6 +76,12 @@
     <Text Include="input\input_6_1.txt">
       <Filter>Input</Filter>
     </Text>
+    <Text Include="input\input_8_0.txt">
+      <Filter>Input</Filter>
+    </Text>
+    <Text Include="input\input_8_1.txt">
+      <Filter>Input</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
@@ -90,6 +99,9 @@
       <Filter>Days</Filter>
     </ClInclude>
     <ClInclude Include="Days\Day06.h">
+      <Filter>Days</Filter>
+    </ClInclude>
+    <ClInclude Include="Days\Day08.h">
       <Filter>Days</Filter>
     </ClInclude>
   </ItemGroup>
