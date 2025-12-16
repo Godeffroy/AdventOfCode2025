@@ -1,17 +1,55 @@
 #include "Day06.h"
 
 // result :
-// 
+// 11950004808442
 void Day_06_Part_2()
 {
-	vector<string> inputLines = ReadInputFile(6, 0);
+	vector<string> inputLines = ReadInputFile(6, 1);
 	long long result = 0;
 	long long progress = 0;
-	for (string line : inputLines)
+
+	vector<problem_t> problems;
+	int i = inputLines.back().find_first_not_of(' ', 0);
+	while (i != -1)
 	{
-		UpdateProgress(progress++, inputLines.size(), line);
+		problem_t prob;
+		prob.operation = inputLines.back()[i];
+		prob.posStart = i;
+		prob.posEnd = inputLines.back().find_first_not_of(' ', i+1)-2;
+		if (prob.posEnd < 0)
+			prob.posEnd = inputLines.back().size()-1;
+		for (int y = prob.posEnd; y >= prob.posStart; y--)
+		{
+			prob.numbers.push_back(string(inputLines.size() - 1, ' '));
+			for (int z = 0; z < inputLines.size()-1; z++)
+			{
+				prob.numbers.back()[z] = inputLines[z][y];
+			}
+		}
+		problems.push_back(prob);
+		i = inputLines.back().find_first_not_of(' ', i+1);
+
+		//UpdateProgress(progress++, inputLines.back().size(), to_string(i));
 	}
 
+	for (auto prob : problems)
+	{
+		long long subResult;
+		if (prob.operation == '+')
+			subResult = 0;
+		else if (prob.operation == '*')
+			subResult = 1;
+
+		for (auto num : prob.numbers)
+		{
+			if (prob.operation == '+')
+				subResult += stoi(num);
+			else if (prob.operation == '*')
+				subResult *= stoi(num);
+		}
+		result += subResult;
+		UpdateProgress(progress++, problems.size(), to_string(subResult));
+	}
 	println("Result : " + to_string(result));
 }
 

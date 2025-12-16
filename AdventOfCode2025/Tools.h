@@ -18,6 +18,7 @@ using std::stoi;
 using std::stol;
 using std::stoll;
 
+
 #define print(x) cout<<x
 #define println(x) cout << x << endl
 
@@ -38,4 +39,16 @@ struct range_t {
 struct dictionnary_t {
 	long long key;
 	long long value;
+};
+
+enum class operation_e {
+	ADD,
+	MUL
+};
+
+struct problem_t {
+	vector<string> numbers;
+	char operation;
+	int posStart;
+	int posEnd;
 };
