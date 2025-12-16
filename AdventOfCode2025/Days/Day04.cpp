@@ -16,10 +16,6 @@ void Day_04_Part_2()
 			grid[grid.size() - 1].push_back(c);
 		}
 	}
-	struct couple {
-    size_t x;
-    size_t y;
-	};
 	vector<couple> remove;
 	while (!remove.empty() || progress == 0)
 	{

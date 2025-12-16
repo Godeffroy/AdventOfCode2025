@@ -24,3 +24,18 @@ using std::stoll;
 vector<string> ReadInputFile(int day, int part);
 void UpdateProgress(size_t progress, size_t total, string const& subResult = "");
 string to_string(long long value, int space);
+
+struct couple {
+	size_t x;
+	size_t y;
+};
+
+struct range_t {
+	long long start;
+	long long end;
+};
+
+struct dictionnary_t {
+	long long key;
+	long long value;
+};

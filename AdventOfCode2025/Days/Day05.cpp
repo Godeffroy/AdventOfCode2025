@@ -10,10 +10,6 @@ void Day_05_Part_2()
 	long long result = 0;
 	long long progress = 0;
 
-	struct range_t {
-		long long start;
-		long long end;
-	};
 	vector<range_t> ranges;
 	vector<long long> ids;
 	for (string line : inputLines)
@@ -28,12 +24,6 @@ void Day_05_Part_2()
 		}
 	}
 
-	struct dictionnary_t {
-		long long key;
-		long long value;
-	};
-
-	//vector<range_t> freshes;
 	bool added = false;
 	do {
 		added = false;
@@ -80,10 +70,6 @@ void Day_05_Part_1()
 	long long result = 0;
 	long long progress = 0;
 
-	struct range_t {
-		long long start;
-		long long end;
-	};
 	vector<range_t> ranges;
 	vector<long long> ids;
 	for (string line : inputLines)
