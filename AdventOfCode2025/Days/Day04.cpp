@@ -16,13 +16,13 @@ void Day_04_Part_2()
 			grid[grid.size() - 1].push_back(c);
 		}
 	}
-	vector<couple> remove;
+	vector<couple_t> remove;
 	while (!remove.empty() || progress == 0)
 	{
 		remove.clear();
-		for (size_t y = 0; y < grid.size(); y++)
+		for (int y = 0; y < grid.size(); y++)
 		{
-			for (size_t x = 0; x < grid[y].size(); x++)
+			for (int x = 0; x < grid[y].size(); x++)
 			{
 				if (grid[y][x] == '.')
 					continue;
@@ -55,7 +55,7 @@ void Day_04_Part_2()
 
 				if (roll < 4)
 				{
-					remove.push_back(couple{ x,y });
+					remove.push_back(couple_t{ x,y });
 					result++;
 				}
 			}
@@ -63,7 +63,7 @@ void Day_04_Part_2()
 		}
 		UpdateProgress(progress, inputLines.size(), to_string(remove.size()));
 
-		for (couple c : remove)
+		for (couple_t c : remove)
 		{
 			grid[c.y][c.x] = '.';
 		}
