@@ -1,7 +1,7 @@
 #include "Day08.h"
 
 // result :
-// 
+// 123234
 void Day_08_Part_2()
 {
 	vector<string> inputLines = ReadInputFile(8, 0);
@@ -20,7 +20,7 @@ void Day_08_Part_2()
 // 
 void Day_08_Part_1()
 {
-	vector<string> inputLines = ReadInputFile(8, 0);
+	vector<string> inputLines = ReadInputFile(8, 1);
 	long long result = 0;
 	long long progress = 0;
 
@@ -97,8 +97,8 @@ void Day_08_Part_1()
 		}
 		cptMax++;
 
-		UpdateProgress(cptMax, sortedClosestBoxes.size(), "");
-		if (cptMax >= 10)
+		UpdateProgress(cptMax, sortedClosestBoxes.size(), to_string(networkGlobal));
+		if (cptMax >= 1000)
 			break;
 	}
 	println("---");
