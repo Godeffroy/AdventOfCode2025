@@ -3,7 +3,7 @@
 // result :
 // 1221958433 too low
 // 670023973 too low
-// 
+// 9259958565 OK
 void Day_08_Part_2()
 {
 	vector<string> inputLines = ReadInputFile(8, 1);
@@ -26,8 +26,6 @@ void Day_08_Part_2()
 	{
 		for (int y = i + 1; y < boxes.size(); y++)
 		{
-			if (i == y)
-				continue;
 			double distance = EuclideanDistance(boxes[i].point, boxes[y].point);
 			//insert sorted by distance, without including the pair twice
 			sortedClosestCoupleBoxes.emplace_back();
@@ -40,33 +38,35 @@ void Day_08_Part_2()
 	int networkGlobal = -1;
 	int cptMax = 0;
 	boxCoupleRef_t lastBoxCouple;
+	int activeNetworks = boxes.size(); // Nombre de réseaux actifs
+
 	for (auto& [box1, box2, distance] : sortedClosestCoupleBoxes)
 	{
+		int net1 = box1->network;
+		int net2 = box2->network;
+
 		if (box1->network == -1 && box2->network == -1)
 		{
 			box1->network = box2->network = ++networkGlobal;
+			activeNetworks--; // Fusion de 2 réseaux en 1
 		}
 		else if (box1->network == box2->network)
+		{
+			// Déjà dans le même réseau, skip
 			continue;
+		}
 		else if (box1->network != -1 && box2->network == -1)
 		{
 			box2->network = box1->network;
-			lastBoxCouple.box1 = box1;
-			lastBoxCouple.box2 = box2;
-			lastBoxCouple.distance = distance;
+			activeNetworks--; // Ajout à un réseau existant
 		}
 		else if (box2->network != -1 && box1->network == -1)
 		{
 			box1->network = box2->network;
-			lastBoxCouple.box1 = box1;
-			lastBoxCouple.box2 = box2;
-			lastBoxCouple.distance = distance;
+			activeNetworks--; // Ajout à un réseau existant
 		}
 		else
 		{
-			lastBoxCouple.box1 = box1;
-			lastBoxCouple.box2 = box2;
-			lastBoxCouple.distance = distance;
 			int index = box2->network;
 			for (auto& boxTemp : boxes)
 			{
@@ -75,13 +75,23 @@ void Day_08_Part_2()
 					boxTemp.network = box1->network;
 				}
 			}
+			activeNetworks--; // Fusion de 2 réseaux
+		}
+		if (net1 != net2)
+		{
+			lastBoxCouple.box1 = box1;
+			lastBoxCouple.box2 = box2;
+			lastBoxCouple.distance = distance;
 		}
 
 		cptMax++;
 
 		UpdateProgress(cptMax, sortedClosestCoupleBoxes.size(), to_string(networkGlobal));
-		//if (cptMax >= 1000)
-		//	break;
+		// Si tous les réseaux sont fusionnés, on peut arrêter
+		if (activeNetworks == 1)
+		{
+			break;
+		}
 	}
 	int net = boxes[0].network;
 	bool allInSameNetwork = true;
@@ -99,7 +109,9 @@ void Day_08_Part_2()
 	println("---");
 	println(lastBoxCouple.box1->toString());
 	println(lastBoxCouple.box2->toString());
-	result = lastBoxCouple.box1->point.x * lastBoxCouple.box2->point.x;
+	long long x1 = lastBoxCouple.box1->point.x;
+	long long x2 = lastBoxCouple.box2->point.x;
+	result = x1*x2;
 	println("Result : " + to_string(result));
 }
 
