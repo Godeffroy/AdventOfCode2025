@@ -59,6 +59,10 @@ struct point3D_t {
 	int x;
 	int y;
 	int z;
+	bool operator==(const point3D_t& other) const
+	{
+		return (x == other.x && y == other.y && z == other.z);
+	}
 	string toString() const
 	{
 		return std::format("Point3D({:4},{:4},{:4})", x, y, z);
@@ -69,18 +73,15 @@ struct box_t
 {
 	point3D_t point{ 0,0,0 };
 	int index = -1;
-	//int closestBoxIndex = -1;
-	//double closestDistance = -1;
 	int network = -1;
 
 	box_t(int idx, point3D_t p) : point(p), index(idx) {}
-	/*bool operator<(const box_t& other) const
+	bool operator==(const box_t& other) const
 	{
-		return closestDistance < other.closestDistance;
-	}*/
+		return (point == other.point);
+	}
 	string toString() const
 	{
-		//return std::format("Point({:4},{:4},{:4}) Closest:{:2} Distance:{:4.2f} Network:{:2}", point.x, point.y, point.z, closestBoxIndex, closestDistance, network);
 		return std::format("Point({:4},{:4},{:4}) Network:{:2}", point.x, point.y, point.z, network);
 	}
 };
@@ -106,6 +107,52 @@ struct boxCouple_t
 		return std::format("Box1 [{:2}] ({:4},{:4},{:4}) - Distance:{:4.2f} - ({:4},{:4},{:4}) Box2 [{:2}]",
 			indexBox1, boxes[indexBox1].point.x, boxes[indexBox1].point.y, boxes[indexBox1].point.z,
 			distance, boxes[indexBox2].point.x, boxes[indexBox2].point.y, boxes[indexBox2].point.z, indexBox2);
+	}
+};
+
+struct boxCoupleRef_t
+{
+	box_t* box1;
+	box_t* box2;
+	double distance;
+
+	// Constructeur principal : prend deux box_t par référence et la distance
+	boxCoupleRef_t(box_t& b1, box_t& b2, double dist) : box1(&b1), box2(&b2), distance(dist) {}
+
+	// Constructeur par défaut
+	boxCoupleRef_t() : box1(nullptr), box2(nullptr), distance(0.0) {}
+
+	bool operator<(const boxCoupleRef_t& other) const
+	{
+		return distance < other.distance;
+	}
+	bool operator>(const boxCoupleRef_t& other) const
+	{
+		return distance > other.distance;
+	}
+
+	bool operator==(const boxCoupleRef_t& other) const
+	{
+		// égalité indépendante de l'ordre des boîtes
+		return ((box1 == other.box1 && box2 == other.box2) ||
+				(box1 == other.box2 && box2 == other.box1));
+	}
+
+	// toString compatible avec le format utilisé ailleurs dans le fichier
+	string toString() const
+	{
+		int idx1 = box1 ? box1->index : -1;
+		int idx2 = box2 ? box2->index : -1;
+		int x1 = box1 ? box1->point.x : 0;
+		int y1 = box1 ? box1->point.y : 0;
+		int z1 = box1 ? box1->point.z : 0;
+		int x2 = box2 ? box2->point.x : 0;
+		int y2 = box2 ? box2->point.y : 0;
+		int z2 = box2 ? box2->point.z : 0;
+
+		return std::format("Box1 [{:2}] ({:4},{:4},{:4}) - Distance:{:4.2f} - ({:4},{:4},{:4}) Box2 [{:2}]",
+			idx1, x1, y1, z1,
+			distance, x2, y2, z2, idx2);
 	}
 };
 

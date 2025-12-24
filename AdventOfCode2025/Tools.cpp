@@ -27,5 +27,5 @@ string to_string(long long value, int space)
 
 double EuclideanDistance(point3D_t a, point3D_t b)
 {
-    return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2));
+    return /*sqrt*/(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2));
 }
