@@ -13,10 +13,10 @@ void Day_07_Part_2()
 
 
 // result :
-// 
+// 1550
 void Day_07_Part_1()
 {
-	vector<string> inputLines = ReadInputFile(7, 0);
+	vector<string> inputLines = ReadInputFile(7, 1);
 	long long result = 0;
 
 	println(inputLines[0]);
