@@ -136,12 +136,14 @@
     <ClCompile Include="Days\Day04.cpp" />
     <ClCompile Include="Days\Day05.cpp" />
     <ClCompile Include="Days\Day06.cpp" />
+    <ClCompile Include="Days\Day07.cpp" />
     <ClCompile Include="Days\Day08.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClInclude Include="Days\Day03.h" />
     <ClInclude Include="Days\Day04.h" />
     <ClInclude Include="Days\Day05.h" />
     <ClInclude Include="Days\Day06.h" />
+    <ClInclude Include="Days\Day07.h" />
     <ClInclude Include="Days\Day08.h" />
     <ClInclude Include="Tools.h" />
     <ClCompile Include="main.cpp" />
@@ -161,6 +163,8 @@
     <Text Include="input\input_5_1.txt" />
     <Text Include="input\input_6_0.txt" />
     <Text Include="input\input_6_1.txt" />
+    <Text Include="input\input_7_0.txt" />
+    <Text Include="input\input_7_1.txt" />
     <Text Include="input\input_8_0.txt" />
     <Text Include="input\input_8_1.txt" />
   </ItemGroup>

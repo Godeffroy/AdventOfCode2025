@@ -8,5 +8,5 @@
 #include "Days/Day04.h"
 #include "Days/Day05.h"
 #include "Days/Day06.h"
-
+#include "Days/Day07.h"
 #include "Days/Day08.h"
