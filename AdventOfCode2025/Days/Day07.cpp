@@ -1,12 +1,36 @@
 #include "Day07.h"
 
 // result :
-// 
+// 3098 too low
 void Day_07_Part_2()
 {
-	vector<string> inputLines = ReadInputFile(7, 0);
-	long long result = 0;
+	vector<string> inputLines = ReadInputFile(7, 1);
+	long long result = -2;
 
+	println(inputLines[0]);
+	int start = inputLines[0].find_first_of('S');
+	inputLines[1][start] = '|';
+	for (size_t lineNum = 1; lineNum < inputLines.size(); lineNum++)
+	{
+		println(inputLines[lineNum]);
+		for (size_t charNum = 0; charNum < inputLines[lineNum].size(); charNum++)
+		{
+			if (inputLines[lineNum - 1][charNum] == '|')
+			{
+				if (inputLines[lineNum][charNum] == '^')
+				{
+					inputLines[lineNum + 1][charNum - 1] = '|';
+					inputLines[lineNum + 1][charNum + 1] = '|';
+					result+=2;
+				}
+				else
+				{
+					inputLines[lineNum + 1][charNum] = '|';
+					//result++;
+				}
+			}
+		}
+	}
 	println("---");
 	println("Result : " + to_string(result));
 }
