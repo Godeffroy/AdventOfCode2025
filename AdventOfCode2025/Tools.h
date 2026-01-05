@@ -31,6 +31,15 @@ struct couple_t {
 	{
 		return std::format("Couple({},{})", x, y);
 	}
+	bool operator==(const couple_t& other) const
+	{
+		return (x == other.x && y == other.y);
+	}
+	struct compare_xy {
+		bool operator ()(const couple_t& left, const couple_t& right) const {
+			return (left.x == right.x ? left.y < right.y : left.x < right.x);
+		}
+	};
 };
 
 struct range_t {
@@ -179,3 +188,44 @@ void UpdateProgress(size_t progress, size_t total, string const& subResult = "")
 string to_string(long long value, int space);
 
 double EuclideanDistance(point3D_t a, point3D_t b);
+
+
+struct coupleRef_t
+{
+	couple_t* couple1;
+	couple_t* couple2;
+	long long surface;
+
+	// Constructeur principal : prend deux couple_t par référence
+	coupleRef_t(couple_t& c1, couple_t& c2) : couple1(&c1), couple2(&c2)
+	{
+		//calcul the surface between the two couples
+		surface = (static_cast<long long>(std::abs(c1.x - c2.x)) + 1) * (static_cast<long long>(std::abs(c1.y - c2.y)) + 1);
+
+	}
+
+	// Constructeur par défaut
+	coupleRef_t() : couple1(nullptr), couple2(nullptr), surface(0) {}
+
+	bool operator<(const coupleRef_t& other) const
+	{
+		return surface < other.surface;
+	}
+	bool operator>(const coupleRef_t& other) const
+	{
+		return surface > other.surface;
+	}
+
+	// toString compatible avec le format utilisé ailleurs dans le fichier
+	string toString() const
+	{
+		int x1 = couple1 ? couple1->x : 0;
+		int y1 = couple1 ? couple1->y : 0;
+		int x2 = couple2 ? couple2->x : 0;
+		int y2 = couple2 ? couple2->y : 0;
+
+		return std::format("Couple1 ({:4},{:4}) - Surface:{:4} - ({:4},{:4}) Couple2",
+			x1, y1,
+			surface, x2, y2);
+	}
+};
