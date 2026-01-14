@@ -37,7 +37,7 @@ struct couple_t {
 	}
 	struct compare_xy {
 		bool operator ()(const couple_t& left, const couple_t& right) const {
-			return (left.x == right.x ? left.y < right.y : left.x < right.x);
+			return (left.y == right.y ? left.x < right.x : left.y < right.y);
 		}
 	};
 };
